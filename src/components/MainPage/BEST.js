@@ -134,7 +134,7 @@ const BestProducts = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_BASE_URL}/api/products/best`, {
+    fetch(`http://52.78.188.110:8001/api/products/best`, {
       method: "GET",
       credentials: "include",
     })
@@ -177,7 +177,7 @@ const BestProducts = () => {
             onClick={() => handleProductClick(product.id)}
           >
             <img
-              src={`${process.env.REACT_APP_API_BASE_URL}/images/${product.imageUrl}`}
+              src={`http://52.78.188.110:8001/images/${product.imageUrl}`}
               alt={product.name}
             />
             <Overlay className="overlay">

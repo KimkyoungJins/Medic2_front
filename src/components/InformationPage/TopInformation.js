@@ -158,7 +158,7 @@ const TopInformation = ({ productId }) => {
     const fetchProductData = async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_API_BASE_URL}/api/products/${productId}`,
+          `http://52.78.188.110:8001/api/products/${productId}`,
           {
             method: "GET",
             credentials: "include",
@@ -206,7 +206,7 @@ const TopInformation = ({ productId }) => {
         <>
           <Content>
             <ProductImg
-              src={`${process.env.REACT_APP_API_BASE_URL}/images/${productData.imageUrl}`}
+              src={`http://52.78.188.110:8001/images/${productData.imageUrl}`}
               alt={productData.name}
             />
             <ProductDetails>

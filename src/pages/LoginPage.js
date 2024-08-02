@@ -185,7 +185,7 @@ const LoginPage = () => {
   };
 
   const loginProcess = () => {
-    const apiUrl = `${process.env.REACT_APP_API_BASE_URL}/api/login`;
+    const apiUrl = `http://52.78.188.110:8001/api/login`;
     console.log("Login attempt to URL:", apiUrl);
     console.log("Login attempt:", {
       email: userInfo.email,

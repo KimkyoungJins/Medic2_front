@@ -108,16 +108,13 @@ const ProductList = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(
-          `${process.env.REACT_APP_API_BASE_URL}/api/products`,
-          {
-            method: "GET",
-            credentials: "include",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        const response = await fetch(`http://52.78.188.110:8001/api/products`, {
+          method: "GET",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
         const data = await response.json();
         setProducts(data);
       } catch (error) {
@@ -148,7 +145,7 @@ const ProductList = () => {
           >
             <ImageWrapper>
               <ProductImage
-                src={`${process.env.REACT_APP_API_BASE_URL}/images/${product.imageUrl}`}
+                src={`http://52.78.188.110:8001/images/${product.imageUrl}`}
                 alt={product.name}
                 style={{
                   transform:

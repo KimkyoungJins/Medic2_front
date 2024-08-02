@@ -121,7 +121,7 @@ const Customization = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_BASE_URL}/api/products/custom`, {
+    fetch(`http://52.78.188.110:8001/api/products/custom`, {
       method: "GET",
       credentials: "include",
       headers: {
@@ -177,7 +177,7 @@ const Customization = () => {
           {data.map((product, index) => (
             <Slide
               key={index}
-              bgImage={`${process.env.REACT_APP_API_BASE_URL}/images/${product.imageUrl}`}
+              bgImage={`http://52.78.188.110:8001/images/${product.imageUrl}`}
             >
               <OverlayImage src={img} alt="Overlay" />
               <ProductInfo>

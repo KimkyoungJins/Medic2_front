@@ -232,7 +232,7 @@ const Review = ({ productId }) => {
     const fetchReviews = async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_API_BASE_URL}/api/products/${productId}/reviews`,
+          `http://52.78.188.110:8001/api/products/${productId}/reviews`,
           {
             method: "GET",
             credentials: "include",

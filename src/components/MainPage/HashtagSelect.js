@@ -300,7 +300,7 @@ const HashtagSelect = () => {
   const handleRemoveTag = (tag) => {
     setSelectedTags(selectedTags.filter((t) => t !== tag));
 
-    fetch(`${process.env.REACT_APP_API_BASE_URL}/api/users/tags`, {
+    fetch(`http://52.78.188.110:8001/api/users/tags`, {
       method: "DELETE",
       credentials: "include",
       headers: {
@@ -328,7 +328,7 @@ const HashtagSelect = () => {
   const handleSave = () => {
     const selectedHealthTags = selectedTags;
 
-    fetch(`${process.env.REACT_APP_API_BASE_URL}/api/users/tags`, {
+    fetch(`http://52.78.188.110:8001/api/users/tags`, {
       method: "POST",
       credentials: "include",
       headers: {

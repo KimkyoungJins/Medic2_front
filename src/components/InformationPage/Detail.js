@@ -189,7 +189,7 @@ const Detail = ({ productId }) => {
     const fetchProductData = async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_API_BASE_URL}/api/products/${productId}`,
+          `http://52.78.188.110:8001/api/products/${productId}`,
           {
             method: "GET",
             credentials: "include",

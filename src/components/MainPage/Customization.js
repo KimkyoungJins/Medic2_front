@@ -121,7 +121,7 @@ const Customization = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://52.78.188.110:8001/api/products/custom`, {
+    fetch(`/api/products/custom`, {
       method: "GET",
       credentials: "include",
       headers: {
@@ -175,10 +175,7 @@ const Customization = () => {
       <CarouselContainer>
         <Slider {...settings}>
           {data.map((product, index) => (
-            <Slide
-              key={index}
-              bgImage={`http://52.78.188.110:8001/images/${product.imageUrl}`}
-            >
+            <Slide key={index} bgImage={`/images/${product.imageUrl}`}>
               <OverlayImage src={img} alt="Overlay" />
               <ProductInfo>
                 <Product>#{product.name}</Product>

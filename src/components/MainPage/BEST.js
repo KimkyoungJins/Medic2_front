@@ -134,7 +134,7 @@ const BestProducts = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://52.78.188.110:8001/api/products/best`, {
+    fetch(`/api/products/best`, {
       method: "GET",
       credentials: "include",
     })
@@ -176,10 +176,7 @@ const BestProducts = () => {
             key={product.id}
             onClick={() => handleProductClick(product.id)}
           >
-            <img
-              src={`http://52.78.188.110:8001/images/${product.imageUrl}`}
-              alt={product.name}
-            />
+            <img src={`/images/${product.imageUrl}`} alt={product.name} />
             <Overlay className="overlay">
               <ProductTitle>#{product.name}</ProductTitle>
               <ProductPrice>정상가격: {product.normalPrice}원</ProductPrice>

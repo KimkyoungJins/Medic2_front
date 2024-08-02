@@ -231,16 +231,13 @@ const Review = ({ productId }) => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await fetch(
-          `http://52.78.188.110:8001/api/products/${productId}/reviews`,
-          {
-            method: "GET",
-            credentials: "include",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        const response = await fetch(`/api/products/${productId}/reviews`, {
+          method: "GET",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
         const data = await response.json();
         setReviews(data.reviews);
         setReviewCount(data.reviewCount);

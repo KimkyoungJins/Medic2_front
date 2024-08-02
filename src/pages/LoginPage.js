@@ -184,12 +184,11 @@ const LoginPage = () => {
     navigate("/Medic/SignUpPage");
   };
 
-const loginProcess = () => {
+  const loginProcess = () => {
     const apiUrl = `/api/login`;
     console.log("Login attempt to URL:", apiUrl);
     console.log("Login attempt:", {
       email: userInfo.email,
-      password: userInfo.password,
     });
 
     fetch(apiUrl, {

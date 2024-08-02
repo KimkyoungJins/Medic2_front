@@ -164,7 +164,7 @@ const EffectiveProduct = () => {
   const [recommendedProducts, setRecommendedProducts] = useState([]);
 
   useEffect(() => {
-    fetch(`http://52.78.188.110:8001/api/products/recommend`, {
+    fetch(`/api/products/recommend`, {
       method: "GET",
       credentials: "include",
       headers: {
@@ -208,7 +208,7 @@ const EffectiveProduct = () => {
         {recommendedProducts.map((product, index) => (
           <Product key={index} onClick={() => handleProductClick(product.id)}>
             <ProductImage
-              src={`http://52.78.188.110:8001/images/${product.imageUrl}`}
+              src={`/images/${product.imageUrl}`}
               alt={product.name}
             />
             <ProductName>{product.name}</ProductName>

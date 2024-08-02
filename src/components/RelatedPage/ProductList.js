@@ -108,7 +108,7 @@ const ProductList = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`http://52.78.188.110:8001/api/products`, {
+        const response = await fetch(`/api/products`, {
           method: "GET",
           credentials: "include",
           headers: {
@@ -145,7 +145,7 @@ const ProductList = () => {
           >
             <ImageWrapper>
               <ProductImage
-                src={`http://52.78.188.110:8001/images/${product.imageUrl}`}
+                src={`/images/${product.imageUrl}`}
                 alt={product.name}
                 style={{
                   transform:

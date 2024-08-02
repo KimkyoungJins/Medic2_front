@@ -269,7 +269,7 @@ const ModalButton = styled.button`
   font-family: "Pretendard-Regular";
   font-size: 11px;
   &:hover {
-    background-color: white;
+    border: 0.8px solid #b2d23e;
     color: #b2d23e;
   }
 `;
@@ -300,7 +300,7 @@ const HashtagSelect = () => {
   const handleRemoveTag = (tag) => {
     setSelectedTags(selectedTags.filter((t) => t !== tag));
 
-    fetch(`http://52.78.188.110:8001/api/users/tags`, {
+    fetch(`/api/users/tags`, {
       method: "DELETE",
       credentials: "include",
       headers: {
@@ -328,7 +328,7 @@ const HashtagSelect = () => {
   const handleSave = () => {
     const selectedHealthTags = selectedTags;
 
-    fetch(`http://52.78.188.110:8001/api/users/tags`, {
+    fetch(`/api/users/tags`, {
       method: "POST",
       credentials: "include",
       headers: {

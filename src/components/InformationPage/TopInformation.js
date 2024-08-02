@@ -157,16 +157,13 @@ const TopInformation = ({ productId }) => {
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        const response = await fetch(
-          `http://52.78.188.110:8001/api/products/${productId}`,
-          {
-            method: "GET",
-            credentials: "include",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        const response = await fetch(`/api/products/${productId}`, {
+          method: "GET",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
         const data = await response.json();
         setProductData(data);
       } catch (error) {
@@ -206,7 +203,7 @@ const TopInformation = ({ productId }) => {
         <>
           <Content>
             <ProductImg
-              src={`http://52.78.188.110:8001/images/${productData.imageUrl}`}
+              src={`/images/${productData.imageUrl}`}
               alt={productData.name}
             />
             <ProductDetails>

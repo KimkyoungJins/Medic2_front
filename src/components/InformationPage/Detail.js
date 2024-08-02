@@ -68,8 +68,8 @@ const ModalButton = styled.button`
   font-family: "Pretendard-Regular";
   font-size: 11px;
   &:hover {
-    background-color: white;
     color: #b2d23e;
+    border: 0.8px solid #b2d23e;
   }
 `;
 
@@ -188,16 +188,13 @@ const Detail = ({ productId }) => {
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        const response = await fetch(
-          `http://52.78.188.110:8001/api/products/${productId}`,
-          {
-            method: "GET",
-            credentials: "include",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        const response = await fetch(`/api/products/${productId}`, {
+          method: "GET",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
         const data = await response.json();
         setData(data);
       } catch (error) {

@@ -425,7 +425,7 @@ const SignUpPage = () => {
   const navigate = useNavigate();
 
   const signUpProcess = () => {
-    fetch(`http://52.78.188.110:8001/api/signup`, {
+    fetch(`/api/signup`, {
       method: "POST",
       credentials: "include",
       headers: {

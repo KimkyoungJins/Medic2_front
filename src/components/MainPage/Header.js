@@ -213,7 +213,7 @@ const Header = ({ onSearchOptionChange }) => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch(`http://52.78.188.110:8001/api/logout`, {
+      const response = await fetch(`/api/logout`, {
         method: "POST",
         credentials: "include",
         headers: {

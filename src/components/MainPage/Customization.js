@@ -121,20 +121,20 @@ const Customization = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`/api/products/custom`, {
+    console.log("Fetching data from /api/products/custom...");
+    fetch("/api/products/custom", {
       method: "GET",
       credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
     })
       .then((response) => {
+        console.log(`Response status: ${response.status}`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         return response.json();
       })
       .then((data) => {
+        console.log("Data received:", data);
         if (Array.isArray(data)) {
           setData(data);
         } else {
@@ -146,9 +146,7 @@ const Customization = () => {
       });
   }, []);
 
-  if (!data.length) {
-    return <div>Loading...</div>;
-  }
+  const uniqueTags = [...new Set(data.map((product) => product.tag))];
 
   const settings = {
     dots: true,
@@ -168,20 +166,22 @@ const Customization = () => {
     <>
       <Title>#나의건강해시태그 맞춤추천 상품</Title>
       <Subtitle>
-        {data.map((product) => (
-          <span key={product.id}>#{product.tag} </span>
+        {uniqueTags.map((tag, index) => (
+          <span key={index}>#{tag} </span>
         ))}
       </Subtitle>
       <CarouselContainer>
         <Slider {...settings}>
           {data.map((product, index) => (
             <Slide key={index} bgImage={`/images/${product.imageUrl}`}>
-              <OverlayImage src={img} alt="Overlay" />
+              <OverlayImage
+                src={img}
+                alt="Overlay"
+                onError={(e) => (e.target.style.display = "none")}
+              />
               <ProductInfo>
                 <Product>#{product.name}</Product>
-                <Product>정상가격: {product.normalPrice}원</Product>
-                <Product>판매가격: {product.salePrice}원</Product>
-                <Product>리뷰개수: {product.reviewCnt}</Product>
+                <Product>#{product.salePrice}원</Product>
                 <Product>#{product.tag}</Product>
               </ProductInfo>
               <More onClick={() => handleMoreClick(product.id)}>

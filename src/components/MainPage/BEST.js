@@ -66,6 +66,7 @@ const Overlay = styled.div`
   font-family: "KIMM_Light";
   font-size: 25px;
   padding-left: 37px;
+  padding-right: 37px;
   padding-bottom: 24px;
   box-sizing: border-box;
 `;
@@ -179,9 +180,7 @@ const BestProducts = () => {
             <img src={`/images/${product.imageUrl}`} alt={product.name} />
             <Overlay className="overlay">
               <ProductTitle>#{product.name}</ProductTitle>
-              <ProductPrice>정상가격: {product.normalPrice}원</ProductPrice>
-              <ProductPrice>판매가격: {product.salePrice}원</ProductPrice>
-              <ProductFeature>리뷰개수: {product.reviewCnt}</ProductFeature>
+              <ProductPrice>#{product.salePrice}원</ProductPrice>
               <ProductFeature>#{product.tag}</ProductFeature>
             </Overlay>
           </ProductCard>

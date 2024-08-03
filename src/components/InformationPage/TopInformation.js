@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import img from "../../img/1.png";
 import warning from "../../img/warning.png";
 
 const Container = styled.div`
@@ -148,6 +149,115 @@ const Tag = styled.div`
   display: flex;
   height: 33px;
   padding-left: 12px;
+  padding-right: 12px;
+  justify-content: center;
+  align-items: center;
+`;
+
+const TotalPrice = styled.div`
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  font-family: "Pretendard-Regular";
+  display: flex;
+  max-width: 150px;
+`;
+
+const Quantity2 = styled.div`
+  color: #8c8c8c;
+  font-family: "Pretendard-Regular";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  margin-left: 3px;
+`;
+
+const QuantityControl = styled.div`
+  display: flex;
+  position: relative;
+  margin-top: 15px;
+  line-height: 200%;
+  width: 299px;
+`;
+
+const QuantityInputWrapper = styled.div`
+  position: relative;
+  display: inline-block;
+  margin-right: 130px;
+  width: 100px;
+`;
+
+const QuantityInput = styled.input`
+  border-radius: 4px;
+  width: 46px;
+  height: 28px;
+  text-align: center;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  font-family: "Pretendard-Regular";
+  padding-right: 20px;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+`;
+
+const QuantityArrows = styled.div`
+  display: flex;
+  position: absolute;
+  right: 32px;
+  top: 2.2px;
+  flex-direction: column;
+  height: 100%;
+  border-left: 1px solid #ccc;
+  height: 29px;
+  width: 19px;
+`;
+
+const ArrowButton = styled.div`
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  margin-right: 179px;
+  justify-content: center;
+  cursor: pointer;
+
+  &:first-child {
+    border-bottom: 1px solid #ccc;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+  }
+`;
+
+const ArrowUp = styled(ArrowButton)`
+  &::before {
+    border-width: 0 4px 4px 4px;
+    border-color: transparent transparent #000 transparent;
+  }
+`;
+
+const ArrowDown = styled(ArrowButton)`
+  &::before {
+    border-width: 4px 4px 0 4px;
+    border-color: #000 transparent transparent transparent;
+  }
+`;
+
+const TotalAmount = styled.div`
+  display: flex;
+  width: 100%;
+  font-family: "Pretendard-Regular";
+  font-size: 20px;
+  font-weight: 500;
 `;
 
 const TopInformation = ({ productId }) => {
@@ -238,24 +348,31 @@ const TopInformation = ({ productId }) => {
               </Div>
               <Quantity>
                 <ProductName>{productData.name}</ProductName>
-                <div>
-                  <button onClick={handleDecrease}>-</button>
-                  <input
-                    type="number"
-                    value={quantity}
-                    onChange={handleChange}
-                    min="1"
-                  />
-                  <button onClick={handleIncrease}>+</button>
-                </div>
-                <div>{totalPrice.toLocaleString()}원</div>
+                <QuantityControl>
+                  <QuantityInputWrapper>
+                    <QuantityInput
+                      type="number"
+                      value={quantity}
+                      onChange={handleChange}
+                      min="1"
+                    />
+                    <QuantityArrows>
+                      <ArrowUp onClick={handleIncrease} />
+                      <ArrowDown onClick={handleDecrease} />
+                    </QuantityArrows>
+                  </QuantityInputWrapper>
+                  <TotalPrice>{totalPrice.toLocaleString()}원</TotalPrice>
+                </QuantityControl>
               </Quantity>
-              <div>
-                <div>
-                  총 상품 금액 (수량): {totalPrice.toLocaleString()}원 (
-                  {quantity}개)
-                </div>
-              </div>
+              <TotalAmount>
+                <ProductName style={{ marginLeft: "323px" }}>
+                  총 상품 금액 (수량):
+                </ProductName>
+                <TotalPrice style={{ marginTop: "22px", marginLeft: "4px" }}>
+                  {totalPrice.toLocaleString()}원
+                  <Quantity2>({quantity}개)</Quantity2>
+                </TotalPrice>
+              </TotalAmount>
               <Div>
                 <BuyBtn
                   style={{ marginRight: "10px" }}
